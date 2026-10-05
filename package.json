@@ -1,0 +1,15 @@
+{
+  "name": "be-resume-app",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "randocodes",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
