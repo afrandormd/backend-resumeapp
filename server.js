@@ -1,14 +1,19 @@
 import express from "express"
+import AuthRouter from "./routes/auth.router.js";
+import morgan from "morgan";
 const port = 5000;
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Hello Dunia")
-});
+app.use(express.json());
+app.use(morgan("dev"))
 
-app.listen(5000, () => {
-  console.log("Server is running on port 3000")
+// Parent Routing
+app.use('/api/v1/auth', AuthRouter);
+
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
 
 
