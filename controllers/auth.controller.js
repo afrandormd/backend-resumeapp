@@ -117,7 +117,19 @@ export const LogoutUser = (req, res) => {
 }
 
 export const CurrentUser = (req, res) => {
-  res.json({
-    message: 'Ini Fungsi Current User'
-  });
+  try {
+    return res.status(200).json({
+      message: "Get request user success",
+      user: {
+        id: req.user.id,
+        name: req.user.name,
+        email: req.user.email
+      }
+    });
+
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message
+    });
+  }
 }
