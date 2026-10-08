@@ -111,9 +111,20 @@ export const RegisterUser = async (req, res) => {
 }
 
 export const LogoutUser = (req, res) => {
-  res.json({
-    message: 'Ini Fungsi Logout'
-  });
+  try {
+    res.cookie('jwt', '', {
+      httpOnly: true,
+      expires: new Date(0)
+    })
+
+    res.status(200).json({
+      message: "Logout Success"
+    })
+  } catch (error) {
+    return res.status(500).json({
+      message: 'Ini Fungsi Logout'
+    });
+  }
 }
 
 export const CurrentUser = (req, res) => {
