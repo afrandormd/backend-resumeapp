@@ -28,6 +28,9 @@ const ResumeSchema = new mongoose.Schema({
     image: {
       type: String, default: ''
     },
+    imageId: {
+      type: String, default: ''
+    },
     fullname: {
       type: String, default: ''
     },
