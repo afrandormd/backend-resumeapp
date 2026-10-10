@@ -6,6 +6,9 @@ import connectDB from "./configs/db.js";
 import cookieParser from "cookie-parser";
 import compression from "compression";
 import ResumeRouter from "./routes/resume.router.js";
+import cors from "cors";
+import helmet from "helmet";
+import ExpressMongoSanitize from "express-mongo-sanitize";
 
 const app = express();
 const port = process.env.PORT;
@@ -13,10 +16,14 @@ const port = process.env.PORT;
 await connectDB();
 
 // Middlewares
+app.use(cors())
+app.use(helmet())
+app.use(ExpressMongoSanitize())
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(compression());
+
 
 // Parent Routing
 app.use('/api/v1/auth', AuthRouter);
