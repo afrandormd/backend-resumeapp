@@ -15,6 +15,16 @@ const port = process.env.PORT;
 
 await connectDB();
 
+app.use((req, res, next) => {
+  Object.defineProperty(req, 'query', {
+    value: { ...req.query },
+    writable: true,
+    configurable: true,
+    enumerable: true
+  });
+  next();
+});
+
 // Middlewares
 app.use(cors())
 app.use(helmet())
