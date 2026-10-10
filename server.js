@@ -34,10 +34,18 @@ app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(compression());
 
-
 // Parent Routing
 app.use('/api/v1/auth', AuthRouter);
 app.use('/api/v1/resume', ResumeRouter);
+
+// Health Check
+app.get("/api/v1/health", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Resume Builder API is running",
+    timestamp: new Date().toISOString(),
+  });
+});
 
 
 app.listen(port, () => {
