@@ -26,7 +26,10 @@ app.use((req, res, next) => {
 });
 
 // Middlewares
-app.use(cors())
+app.use(cors({
+  origin: true,
+  credentials: true
+}))
 app.use(helmet())
 app.use(ExpressMongoSanitize())
 app.use(express.json());
