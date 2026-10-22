@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 
 // Middlewares
 app.use(cors({
-  origin: true,
+  origin: "https://foliora-black.vercel.app",
   credentials: true
 }))
 app.use(helmet())
